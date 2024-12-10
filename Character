@@ -9,12 +9,12 @@ public class Character {
     private int hp, speed, stamina, sightRadius, progress;
     private ArrayList<Item> inventory;
 
-    public Character(String name, int hp, int speed, int stamina, int sightRadius) {
-        this.name = name;
+    public Character(String n, int hp, int s, int st, int sr) {
+        this.name = n;
         this.hp = hp;
-        this.speed = speed;
-        this.stamina = stamina;
-        this.sightRadius = sightRadius;
+        this.speed = s;
+        this.stamina = st;
+        this.sightRadius = sr;
         this.progress = 0; // Initialize progress at 0
         this.inventory = new ArrayList<>();
     }
