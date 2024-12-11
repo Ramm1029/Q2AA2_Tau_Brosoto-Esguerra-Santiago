@@ -1,12 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author ramai
- */
 package game;
 
 /**
@@ -16,7 +7,6 @@ public class Killer {
     protected String name;
     protected int hp, sightRadius, damage, speed, position;
 
-    
     public Killer(String n, int hp, int sr, int d, int s) {
         this.name = n;
         this.hp = hp;
