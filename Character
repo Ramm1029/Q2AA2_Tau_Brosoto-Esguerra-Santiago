@@ -1,3 +1,9 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package game;
+
 import java.util.ArrayList;
 
 /**
@@ -6,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Character {
     private String name;
-    private int hp, speed, stamina, sightRadius, progress;
+    private int hp, speed, stamina, sightRadius, progress, position;
     private ArrayList<Item> inventory;
 
     public Character(String n, int hp, int s, int st, int sr) {
@@ -15,25 +21,27 @@ public class Character {
         this.speed = s;
         this.stamina = st;
         this.sightRadius = sr;
-        this.progress = 0; // Initialize progress at 0
+        this.progress = 0;
+        this.position = 0;
         this.inventory = new ArrayList<>();
     }
     
     public void walk() {
         if (stamina > 0) {
             stamina -= 2;
-            System.out.println(name + " is walking");
+            position += speed; 
         } else {
             System.out.println(name + " is too tired to walk.");
         }
     }
+
     public void sprint() {
         if (stamina >= 4) {
             stamina -= 4;
-            System.out.println(name + " is sprinting");
+            position += speed * 2;
         } else {
             System.out.println(name + " is too tired to sprint.");
-         }
+        }
     }
     public void pickUpItem(Item item){
         if (item != null) {
@@ -43,23 +51,21 @@ public class Character {
             System.out.println("There's nothing to pick up.");
         }
     }
-    public void attackKiller(Killer killer){ 
-        if (!inventory.isEmpty()) {
-            Item weapon = inventory.get(0);
+    public void attackKiller(Killer killer) {
+        Item weapon = inventory.get(0);
+        int distance = Math.abs(killer.getPosition() - this.position);
+        if (distance <= weapon.getRange()) {
             if (weapon.getDurability() > 0) {
-                killer.takeDamage(weapon.getDamage());
-                weapon.decreaseDurability();
-                System.out.println(name + " attacked " + killer.getName() + " with " + weapon.getName());
-            } else {
-                System.out.println(weapon.getName() + " is broken and cannot be used.");
+                    killer.takeDamage(weapon.getDamage());
+                    weapon.decreaseDurability();      
             }
-        } else {
-            System.out.println("No items to attack with.");
         }
-    } 
+    }
+
     public void interactWithFixture(Fixture fixture) {
         if (fixture != null) {
             fixture.performFunction();
+            System.out.println(name + " interacted with " + fixture.getName());
         } else {
             System.out.println("There's nothing to interact with.");
         }
@@ -83,5 +89,10 @@ public class Character {
             System.out.println(name + " took " + damage + " damage. HP: " + hp);
         }
     }
+    
+    public String getName(){
+        return name;
+    }
 }
+
 
