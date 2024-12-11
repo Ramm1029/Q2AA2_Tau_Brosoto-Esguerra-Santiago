@@ -1,14 +1,10 @@
 package game;
 
-/**
- * 
- */
 public class Item implements Descriptive {
     private String name, description;
     private int durability, damage, range;
     private boolean pickedUp;
 
-  
     public Item(String name, String description, int durability, int damage, int range) {
         this.name = name;
         this.description = description;
