@@ -1,1 +1,72 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+/**
+ *
+ * @author ramai
+ */
+package game;
+
+/**
+ * 
+ */
+public class Killer {
+    private String name;
+    private int hp, sightRadius, damage, speed, position;
+
+    
+    public Killer(String n, int hp, int sr, int d, int s) {
+        this.name = n;
+        this.hp = hp;
+        this.sightRadius = sr;
+        this.damage = d;
+        this.speed = s;
+        this.position = 0;
+    }
+
+    public void chase(Character character, int characterPosition) {
+        int distance = Math.abs(characterPosition - this.position);
+        if (distance <= sightRadius) {
+            if (this.position < characterPosition) {
+                this.position += speed;
+            } else if (this.position > characterPosition) {
+                this.position -= speed;
+            }
+        } else {
+            System.out.println(name + " cannot see " + character.getName());
+        }
+    }
+
+    public void attack(Character character, int characterPosition) {
+        int distance = Math.abs(characterPosition - this.position);
+        if (distance <= sightRadius) {
+            character.takeDamage(damage);
+        }
+    }
+    
+    public void recoverHealth(int characterPosition) {
+        int distance = Math.abs(characterPosition - this.position);
+        if (distance > sightRadius) {
+            hp++;
+        }
+    }
+    public boolean isAlive() {
+        return hp > 0;
+    }
+
+    public void takeDamage(int damage) {
+        hp -= damage;
+        if (hp <= 0) {
+            hp = 0;
+            System.out.println(name + " has been defeated.");
+        }
+    }
+    
+    public int getPosition() {
+        return position;
+    }
+}
+
 
