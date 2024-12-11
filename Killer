@@ -13,8 +13,8 @@ package game;
  * 
  */
 public class Killer {
-    private String name;
-    private int hp, sightRadius, damage, speed, position;
+    protected String name;
+    protected int hp, sightRadius, damage, speed, position;
 
     
     public Killer(String n, int hp, int sr, int d, int s) {
@@ -62,10 +62,6 @@ public class Killer {
             hp = 0;
             System.out.println(name + " has been defeated.");
         }
-    }
-    
-    public int getPosition() {
-        return position;
     }
 }
 
