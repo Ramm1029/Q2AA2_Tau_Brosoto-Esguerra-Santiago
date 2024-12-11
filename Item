@@ -46,4 +46,8 @@ public class Item {
     public boolean isBroken() {
         return durability <= 0;
     }
+    @Override 
+    public void showDescription() { 
+    System.out.println("Item: " + name + "\nDescription: " + description); 
+    }
 }
