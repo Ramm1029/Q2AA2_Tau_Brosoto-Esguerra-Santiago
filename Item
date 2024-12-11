@@ -3,8 +3,8 @@ package game;
 /**
  * 
  */
-public class Item {
-    private String name;
+public class Item implemen{
+    private String name, description;
     private int durability, damage, range;
     private boolean pickedUp;
 
@@ -30,11 +30,6 @@ public class Item {
             System.out.println(name + " is broken and cannot be used.");
         }
     }
-
-    public void interact() {
-        System.out.println("Item: " + name + "\nDescription: " + description);
-    }
-
     public void decreaseDurability() {
         durability--;
         if (durability <= 0) {
