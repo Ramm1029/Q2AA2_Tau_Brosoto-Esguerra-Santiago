@@ -1,5 +1,9 @@
-package game;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
 
-public interface Descriptive { 
-  void showDescription(); 
+public interface Descriptive {
+    public void showDescription();
 }
