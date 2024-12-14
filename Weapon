@@ -1,0 +1,41 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
+
+public class Weapon extends Item {
+    private int durability, damage, range;
+    
+    public Weapon(String name, String description, int durability, int damage, int range) {
+        super(name, description);
+    }
+    
+    // use Item to attack Killer
+    public void use(Killer killer, int distance) {
+        if (durability > 0) {
+            if (distance <= range) {
+                killer.takeDamage(damage);
+                decreaseDurability();
+            }
+        } else {
+            System.out.println(this.name + " is broken and cannot be used.");
+        }
+    }
+    public void decreaseDurability() {
+        durability--;
+    }
+    // getters
+    public int getRange() {
+        return range;
+    }
+    public int getDamage() {
+        return damage;
+    }
+    public int getDurability() {
+        return durability;
+    }
+    public boolean isBroken() {
+        return durability <= 0;
+    }
+}
