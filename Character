@@ -57,7 +57,14 @@ public class Character {
             }
         }
     }
-
+    public void useItem(Item item, Fixture target) {
+            if (target.isCompatible(item)) {
+                item.performFunction(target);
+                System.out.println(this.name + " used " + item.getName() + " on " + target.getName());
+            } else {
+                System.out.println(item.getName() + " is not compatible with " + target.getName());
+            }
+        }
     public void interactWithFixture(Fixture fixture) {
         if (fixture != null) {
             fixture.performFunction();
