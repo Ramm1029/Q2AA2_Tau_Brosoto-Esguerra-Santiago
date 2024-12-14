@@ -14,4 +14,13 @@ public class Puzzle {
     public void solve(String answer) {
         solved = this.answer.equals(answer);
     }
+    public String getQuestion() {
+        return question;
+    }
+    public String getAnswer() {
+        return answer;
+    }
+    public boolean getStatus() {
+        return solved;
+    }
 }
