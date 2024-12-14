@@ -14,29 +14,32 @@ public class CS4_AA_Tau_BrosotoEsguerraSantiago {
         Scanner sc = new Scanner(System.in);
         Character player = new Character("EJ");
         Fixture chair = new Fixture("Chair", "This is a chair you can sit on.");
-        Item stick = new Item("Stick", "This is a stick you can use.", 100, 10, 10);
+        Item stick = new Weapon("Stick", "This is a stick you can use.", 100, 10, 10);
         Killer ghostface = new Humanoid("Ghostface");
         Killer werewolf = new Monster("Werewolf");
         Room shb319 = new Room("SHB 319", "This is Tau's homeroom classroom", true);
-        Key shb319Key = new Key(shb319);
+        Key shb319Key = new Key("SHB 319 Key", shb319);
         Puzzle stickPuzzle = new Puzzle("I'm tall when I'm young, and I'm short when I'm old. What am I?", "candle", stick);
         
         shb319.addFixture(chair);
         
-        while(true) {
+        OUTER:
+        while (true) {
             System.out.println("Welcome to SHB Mysteries: What Lurks...");
             System.out.println("Would you like to play? [Y/N] ");
             var play = sc.nextLine();
-            if (play.equals("Y")) {
-                player.interact(stick);
-                player.interact(chair);
-                player.interact(shb319);
-            } else if (play.equals("N")) {
-                System.out.println("Thank you. Goodbye!");
-                break;
-            } else {
-                System.out.println("Please input Y or N only.");
-                continue;
+            switch (play) {
+                case "Y":
+                    player.interact(stick);
+                    player.interact(chair);
+                    player.interact(shb319);
+                    break;
+                case "N":
+                    System.out.println("Thank you. Goodbye!");
+                    break OUTER;
+                default:
+                    System.out.println("Please input Y or N only.");
+                    break;
             }
         }
     }
