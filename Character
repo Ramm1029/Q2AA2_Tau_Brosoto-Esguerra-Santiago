@@ -8,18 +8,19 @@ import java.util.ArrayList;
 
 public class Character {
     private String name;
-    private int maxHP, hp, maxStamina, stamina, speed, sightRadius, progress, position;
+    private int hp, stamina, speed, sightRadius, progress, position;
+    private final int maxHP = 100, maxStamina = 100;
     private ArrayList<Item> inventory;
 
     public Character(String name, int hp, int speed, int stamina, int sightRadius) {
         this.name = name;
         this.hp = hp;
         this.speed = speed;
-        this.stamina = stamina;
+        this.stamina = 100;
         this.sightRadius = sightRadius;
         progress = 0;
         position = 0;
-        inventory = new ArrayList<Item>();
+        inventory = new ArrayList<>();
     }
     
     public void walk() {
@@ -30,22 +31,20 @@ public class Character {
             System.out.println(name + " is too tired to walk.");
         }
     }
-
     public void sprint() {
-        if (stamina >= 4) {
+        if (stamina >= 20) {
             stamina -= 4;
             position += speed * 2;
         } else {
             System.out.println(name + " is too tired to sprint.");
         }
     }
+    public void restoreStamina() {
+        stamina = maxStamina;
+    }
     public void pickUpItem(Item item){
-        if (item != null) {
-            inventory.add(item);
-            System.out.println(name + " picked up " + item.getName());
-        } else {
-            System.out.println("There's nothing to pick up.");
-        }
+        inventory.add(item);
+        System.out.println(name + " picked up " + item.getName());
     }
     public void attackKiller(Killer killer) {
         Item weapon = inventory.get(0);
@@ -57,33 +56,19 @@ public class Character {
             }
         }
     }
-    public void useItem(Item item, Fixture target) {
-            if (target.isCompatible(item)) {
-                item.performFunction(target);
-                System.out.println(this.name + " used " + item.getName() + " on " + target.getName());
-            } else {
-                System.out.println(item.getName() + " is not compatible with " + target.getName());
-            }
-        }
     public void interactWithFixture(Fixture fixture) {
-        if (fixture != null) {
-            fixture.performFunction();
-            System.out.println(name + " interacted with " + fixture.getName());
-        } else {
-            System.out.println("There's nothing to interact with.");
-        }
-    }
+        System.out.println(name + " interacted with " + fixture.getName());
+        fixture.performFunction();
+    }    
     public void enterRoom(Room room) {
-        if (room != null && room.isAvailable()) {
+        if (room.isAvailable()) {
             progress++;
             System.out.println(name + " entered " + room.getName());
         } else {
-            System.out.println(room != null ? "The room is locked." : "No room to enter.");
+            System.out.println("The room is locked.");
         }
     }
-    public boolean isAlive() { 
-        return hp > 0; 
-    }
+
     public void takeDamage(int damage) {
         hp -= damage;
         if (hp <= 0) {
@@ -92,9 +77,33 @@ public class Character {
             System.out.println(name + " took " + damage + " damage. HP: " + hp);
         }
     }
-    
-    public String getName(){
+    // getters 
+    public String getName() {
         return name;
+    }
+    public int getHP() {
+        return hp;
+    }
+    public int getMaxHP() {
+        return maxHP;
+    }
+    public int getStamina() {
+        return stamina;
+    }
+    public int getMaxStamina() {
+        return maxStamina;
+    }
+    public int getSightRadius() {
+        return sightRadius;
+    }
+    public int getProgress() {
+        return progress;
+    }
+    public int getPosition() {
+        return position;
+    }
+    public boolean isAlive() { 
+        return hp > 0; 
     }
 }
 
