@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package game;
 
 import java.util.ArrayList;
@@ -11,15 +15,15 @@ public class Character {
     private int hp, speed, stamina, sightRadius, progress, position;
     private ArrayList<Item> inventory;
 
-    public Character(String name, int hp, int speed, int stamina, int sightRadius) {
-        this.name = name;
+    public Character(String n, int hp, int s, int st, int sr) {
+        this.name = n;
         this.hp = hp;
-        this.speed = speed;
-        this.stamina = stamina;
-        this.sightRadius = sightRadius;
-        progress = 0;
-        position = 0;
-        inventory = new ArrayList<Item>();
+        this.speed = s;
+        this.stamina = st;
+        this.sightRadius = sr;
+        this.progress = 0;
+        this.position = 0;
+        this.inventory = new ArrayList<>();
     }
     
     public void walk() {
@@ -58,14 +62,15 @@ public class Character {
         }
     }
 
-    public void interactWithFixture(Fixture fixture) {
-        if (fixture != null) {
-            fixture.performFunction();
-            System.out.println(name + " interacted with " + fixture.getName());
-        } else {
-            System.out.println("There's nothing to interact with.");
+      public void useItem(Item item, Fixture target) {
+            if (target.isCompatible(item)) {
+                item.performFunction(target);
+                System.out.println(this.name + " used " + item.getName() + " on " + target.getName());
+            } else {
+                System.out.println(item.getName() + " is not compatible with " + target.getName());
+            }
         }
-    }
+      
     public void enterRoom(Room room) {
         if (room != null && room.isAvailable()) {
             progress++;
