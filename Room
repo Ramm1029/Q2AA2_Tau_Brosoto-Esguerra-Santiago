@@ -1,9 +1,14 @@
-package game;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
 import java.util.*;
 
-public class Room {
+public class Room implements Descriptive {
     private String name, description;
     private boolean availability;
+    private Key key;
     private ArrayList<Fixture> fixtureList = new ArrayList<>();
     
     public Room(String name, String description, boolean availability) {
@@ -12,6 +17,14 @@ public class Room {
         this.availability = availability;
     }
     
+    public void unlockRoom() {
+        availability = true;
+    }
+    @Override
+    public void showDescription() {
+        System.out.println(description);
+    }
+    // getters
     public boolean isAvailable() {
         return availability;
     }
@@ -21,8 +34,10 @@ public class Room {
     public String getDescription() {
         return description;
     }
+    public Key getKey() {
+        return key;
+    }
     public ArrayList<Fixture> getFixtureList() {
         return fixtureList;
     }
 }
-
