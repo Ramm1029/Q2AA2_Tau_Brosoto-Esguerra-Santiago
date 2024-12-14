@@ -27,4 +27,14 @@ public class Item implements Descriptive {
     public boolean isPickedUp() {
         return pickedUp;
     }
+    // setters
+    public void setName(String name) {
+    this.name = name;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setPickedUp(boolean pickedUp) {
+        this.pickedUp = pickedUp;
+    }
 }
