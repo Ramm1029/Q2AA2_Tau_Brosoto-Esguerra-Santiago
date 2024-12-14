@@ -4,13 +4,12 @@
  */
 package cs4_aa_tau_brosotoesguerrasantiago;
 
-public class Key implements Descriptive {
-    private String name, description;
+public class Key extends Item {
     private Room room;
     
-    public Key(Room room) {
+    public Key(String name, Room room) {
+        super(name, "This key looks like it could be used for the " + room + " lock.");
         this.room = room;
-        description = "This key looks like it could be used for the " + room + " lock.";
     }
     
     public void use(Room room) {
@@ -20,17 +19,7 @@ public class Key implements Descriptive {
             System.out.println(name + " cannot be  used on " + room.getName() + ".");
         }
     }
-    @Override
-    public void showDescription() {
-        System.out.println(description);
-    }
     // getters
-    public String getName() {
-        return name;
-    }
-    public String getDescription() {
-        return description;
-    }
     public String getRoom() {
         return room.getName();
     }
