@@ -1,4 +1,8 @@
-package game;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Item implements Descriptive {
     private String name, description;
@@ -24,27 +28,33 @@ public class Item implements Descriptive {
             System.out.println(this.name + " is broken and cannot be used.");
         }
     }
-   public void performFunction(Fixture fixture) {
-        if (durability > 0) {
-            fixture.performFunction();
-            decreaseDurability();
-            System.out.println(this.name + " performed its function on " + fixture.getName());
-        } else {
-            System.out.println(this.name + " is broken and cannot be used.");
-        }
-    }
     public void decreaseDurability() {
         durability--;
     }
-    public boolean isBroken() {
-        return durability <= 0;
+    @Override
+    public void showDescription() {
+        System.out.println(description);
+    }
+    // getters
+    public String getName() {
+        return name;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public int getRange() {
+        return range;
+    }
+    public int getDamage() {
+        return damage;
+    }
+    public int getDurability() {
+        return durability;
     }
     public boolean isPickedUp() {
         return pickedUp;
     }
-
-    @Override
-    public void showDescription() {
-        System.out.println("Item: " + name + "\nDescription: " + description);
+    public boolean isBroken() {
+        return (durability <= 0);
     }
 }
