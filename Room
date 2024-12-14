@@ -36,9 +36,6 @@ public class Room implements Descriptive {
     public String getDescription() {
         return description;
     }
-    public Key getKey() {
-        return key;
-    }
     public ArrayList<Fixture> getFixtureList() {
         return fixtureList;
     }
