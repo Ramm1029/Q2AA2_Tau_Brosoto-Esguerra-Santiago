@@ -8,7 +8,6 @@ import java.util.*;
 public class Room implements Descriptive {
     private String name, description;
     private boolean availability;
-    private Key key;
     private ArrayList<Fixture> fixtureList = new ArrayList<>();
     
     public Room(String name, String description, boolean availability) {
