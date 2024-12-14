@@ -1,1 +1,15 @@
+package game;
 
+public class Fixture implements Descriptive {
+    private String name, description;
+            
+    public Fixture(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+    
+    @Override
+    public void showDescription() {
+        System.out.println(description);
+    }
+}
