@@ -1,7 +1,11 @@
-package game;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Humanoid extends Killer {
-    public Humanoid(String name, int hp, int sightRadius, int damage, int speed) {
-        super(name, hp, sightRadius, damage, speed * 2); 
+    public Humanoid(String name, int hp, int sightRadius, int damage, int speed, int atkSpeed) {
+        super(name, 80, sightRadius, damage, 80, 80); 
     }
 }
