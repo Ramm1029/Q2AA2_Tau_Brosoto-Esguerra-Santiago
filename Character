@@ -11,12 +11,12 @@ public class Character {
     private final int maxHP = 100, maxStamina = 100;
     private ArrayList<Item> inventory;
 
-    public Character(String name, int hp, int speed, int stamina, int sightRadius) {
+    public Character(String name) {
         this.name = name;
-        this.hp = hp;
-        this.speed = speed;
+        this.hp = 100;
+        this.speed = 100;
         this.stamina = 100;
-        this.sightRadius = sightRadius;
+        this.sightRadius = 100;
         progress = 0;
         position = 0;
         inventory = new ArrayList<>();
@@ -45,8 +45,7 @@ public class Character {
         inventory.add(item);
         System.out.println(name + " picked up " + item.getName());
     }
-    public void attackKiller(Killer killer) {
-        Item weapon = inventory.get(0);
+    public void attackKiller(Weapon weapon, Killer killer) { 
         int distance = Math.abs(killer.getPosition() - this.position);
         if (distance <= weapon.getRange()) {
             if (weapon.getDurability() > 0) {
