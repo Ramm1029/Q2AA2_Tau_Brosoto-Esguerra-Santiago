@@ -1,9 +1,8 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package game;
-
+package cs4_aa_tau_brosoto_esguerra_santiago;
 import java.util.ArrayList;
 
 public class Character {
@@ -68,7 +67,6 @@ public class Character {
             System.out.println("The room is locked.");
         }
     }
-
     public void takeDamage(int damage) {
         hp -= damage;
         if (hp <= 0) {
@@ -76,6 +74,9 @@ public class Character {
         } else {
             System.out.println(name + " took " + damage + " damage. HP: " + hp);
         }
+    }
+    public void interact(Descriptive d) {
+        d.showDescription();
     }
     // getters 
     public String getName() {
@@ -106,4 +107,3 @@ public class Character {
         return hp > 0; 
     }
 }
-
