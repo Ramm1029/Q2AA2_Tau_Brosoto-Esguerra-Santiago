@@ -105,4 +105,30 @@ public class Character {
     public boolean isAlive() { 
         return hp > 0; 
     }
+    // setters
+    public void setName(String name) { 
+        this.name = name; 
+    }
+     public void setHP(int hp) { 
+        this.hp = hp; 
+    }
+     public void setMaxHP(int maxHP) { 
+        this.maxHP = maxHP; 
+    }
+     public void setStamina(int stamina) { 
+        this.stamina = stamina; 
+    }
+    public void setMaxStamina(int maxStamina) { 
+        this.maxStamina = maxStamina; 
+    }
+    public void setSightRadius(int sightRadius) { 
+        this.sightRadius = sightRadius; 
+    }
+    public void setProgress(int progress) { 
+        this.progress = progress; 
+    }
+    public void setPosition(int position) { 
+        this.position = position; 
+    }
 }
+
