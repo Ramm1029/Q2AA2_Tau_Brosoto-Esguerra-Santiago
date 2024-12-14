@@ -17,6 +17,9 @@ public class Room implements Descriptive {
         this.availability = availability;
     }
     
+    public void addFixture(Fixture fixture) {
+        fixtureList.add(fixture);
+    }
     public void unlockRoom() {
         availability = true;
     }
