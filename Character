@@ -6,10 +6,6 @@ package game;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author ramai
- */
 public class Character {
     private String name;
     private int maxHP, hp, maxStamina, stamina, speed, sightRadius, progress, position;
