@@ -18,7 +18,7 @@ public class CS4_AA_Tau_BrosotoEsguerraSantiago {
         Killer ghostface = new Humanoid("Ghostface");
         Killer werewolf = new Monster("Werewolf");
         Room shb319 = new Room("SHB 319", "This is Tau's homeroom classroom", true);
-        Key shb319Key = new Key("SHB 319 Key", shb319);
+        Item shb319Key = new Key("SHB 319 Key", shb319);
         Puzzle stickPuzzle = new Puzzle("I'm tall when I'm young, and I'm short when I'm old. What am I?", "candle", stick);
         
         shb319.addFixture(chair);
