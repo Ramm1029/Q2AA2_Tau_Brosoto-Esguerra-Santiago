@@ -5,7 +5,13 @@
 package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Monster extends Killer {
-    public Monster(String name, int hp, int sightRadius, int damage, int speed, int atkSpeed) {
-        super(name, 120, sightRadius, damage, 110, 120);
+    public Monster(String name) {
+        super(name);
+        this.hp = 120;
+        this.sightRadius = 100;
+        this.damage = 30;
+        this.speed = 110;
+        this.atkSpeed = 70;
+        this.position = 0;
     }
 }
