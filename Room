@@ -39,4 +39,17 @@ public class Room implements Descriptive {
     public ArrayList<Fixture> getFixtureList() {
         return fixtureList;
     }
+    // setters
+    public void setAvailable(boolean availability) {
+        this.availability = availability;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setFixtureList(ArrayList<Fixture> fixtureList) {
+        this.fixtureList = fixtureList;
+    }
 }
