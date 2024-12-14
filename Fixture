@@ -29,4 +29,14 @@ public class Fixture implements Descriptive {
     public String getFunction() {
         return function;
     }
+    // setters
+    public void setName(String name) {
+    this.name = name;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setFunction(String function) {
+        this.function = function;
+    }
 }
