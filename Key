@@ -1,0 +1,29 @@
+package game;
+
+public class Key {
+    private String name, description;
+    private Room room;
+    
+    public Key(Room room) {
+        this.room = room;
+        description = "This key looks like it could be used for the " + room + " lock.";
+    }
+    
+    public void use(Room room) {
+        if (this.room.getName().equals(room.getName())) {
+            room.unlockRoom();
+        } else {
+            System.out.println(name + " cannot be  used on " + room.getName() + ".");
+        }
+    }
+    
+    public String getName() {
+        return name;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public String getRoom() {
+        return room.getName();
+    }
+}
