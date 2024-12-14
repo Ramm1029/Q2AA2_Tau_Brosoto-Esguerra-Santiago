@@ -11,15 +11,15 @@ public class Character {
     private int hp, speed, stamina, sightRadius, progress, position;
     private ArrayList<Item> inventory;
 
-    public Character(String n, int hp, int s, int st, int sr) {
-        this.name = n;
+    public Character(String name, int hp, int speed, int stamina, int sightRadius) {
+        this.name = name;
         this.hp = hp;
-        this.speed = s;
-        this.stamina = st;
-        this.sightRadius = sr;
-        this.progress = 0;
-        this.position = 0;
-        this.inventory = new ArrayList<>();
+        this.speed = speed;
+        this.stamina = stamina;
+        this.sightRadius = sightRadius;
+        progress = 0;
+        position = 0;
+        inventory = new ArrayList<Item>();
     }
     
     public void walk() {
