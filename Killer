@@ -1,8 +1,5 @@
 package game;
 
-/**
- * 
- */
 public class Killer {
     protected String name;
     protected int hp, sightRadius, damage, speed, position;
