@@ -1,6 +1,10 @@
-package game;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
 
-public class Key {
+public class Key implements Descriptive {
     private String name, description;
     private Room room;
     
@@ -16,7 +20,11 @@ public class Key {
             System.out.println(name + " cannot be  used on " + room.getName() + ".");
         }
     }
-    
+    @Override
+    public void showDescription() {
+        System.out.println(description);
+    }
+    // getters
     public String getName() {
         return name;
     }
