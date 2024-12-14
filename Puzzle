@@ -35,4 +35,17 @@ public class Puzzle {
     public boolean getStatus() {
         return solved;
     }
+    // setters
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+    public void setItem(Item item) {
+        this.item = item;
+    }
+    public void setStatus(boolean solved) {
+        this.solved = solved;
+    }
 }
