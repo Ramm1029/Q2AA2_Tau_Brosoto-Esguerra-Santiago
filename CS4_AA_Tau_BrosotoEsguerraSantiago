@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package cs4_aa_tau_brosotoesguerrasantiago;
+import java.util.Scanner;
 
 public class CS4_AA_Tau_BrosotoEsguerraSantiago {
 
@@ -10,7 +11,34 @@ public class CS4_AA_Tau_BrosotoEsguerraSantiago {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner sc = new Scanner(System.in);
+        Character player = new Character("EJ");
+        Fixture chair = new Fixture("Chair", "This is a chair you can sit on.");
+        Item stick = new Item("Stick", "This is a stick you can use.", 100, 10, 10);
+        Killer ghostface = new Humanoid("Ghostface");
+        Killer werewolf = new Monster("Werewolf");
+        Room shb319 = new Room("SHB 319", "This is Tau's homeroom classroom", true);
+        Key shb319Key = new Key(shb319);
+        Puzzle stickPuzzle = new Puzzle("I'm tall when I'm young, and I'm short when I'm old. What am I?", "candle", stick);
+        
+        shb319.addFixture(chair);
+        
+        while(true) {
+            System.out.println("Welcome to SHB Mysteries: What Lurks...");
+            System.out.println("Would you like to play? [Y/N] ");
+            var play = sc.nextLine();
+            if (play.equals("Y")) {
+                player.interact(stick);
+                player.interact(chair);
+                player.interact(shb319);
+            } else if (play.equals("N")) {
+                System.out.println("Thank you. Goodbye!");
+                break;
+            } else {
+                System.out.println("Please input Y or N only.");
+                continue;
+            }
+        }
     }
     
 }
