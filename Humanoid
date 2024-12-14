@@ -6,12 +6,6 @@ package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Humanoid extends Killer {
     public Humanoid(String name) {
-        super(name); 
-        this.hp = 80;
-        this.sightRadius = 100;
-        this.damage = 20;
-        this.speed = 100;
-        this.atkSpeed = 50;
-        this.position = 0;
+        super(name, 80, 100, 20, 90, 50); 
     }
 }
