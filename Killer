@@ -1,15 +1,20 @@
-package game;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Killer {
     protected String name;
-    protected int hp, sightRadius, damage, speed, position;
+    protected int hp, sightRadius, damage, speed, position, atkSpeed;
 
-    public Killer(String n, int hp, int sr, int d, int s) {
-        this.name = n;
+    public Killer(String name, int hp, int sightRadius, int damage, int speed, int atkSpeed) {
+        this.name = name;
         this.hp = hp;
-        this.sightRadius = sr;
-        this.damage = d;
-        this.speed = s;
+        this.sightRadius = sightRadius;
+        this.damage = damage;
+        this.speed = speed;
+        this.atkSpeed = atkSpeed;
         this.position = 0;
     }
 
@@ -39,9 +44,6 @@ public class Killer {
             hp++;
         }
     }
-    public boolean isAlive() {
-        return hp > 0;
-    }
 
     public void takeDamage(int damage) {
         hp -= damage;
@@ -50,6 +52,14 @@ public class Killer {
             System.out.println(name + " has been defeated.");
         }
     }
+    
+    public String getName() {
+        return name;
+    }
+    public int getPosition() {
+        return position;
+    }
+    public boolean isAlive() {
+        return hp > 0;
+    }
 }
-
-
