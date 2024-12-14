@@ -11,9 +11,9 @@ public class Item implements Descriptive {
         this.durability = durability;
         this.damage = damage;
         this.range = range;
-        this.pickedUp = false; 
+        pickedUp = false; 
     }
-
+    // use Item to attack Killer
     public void use(Killer killer, int distance) {
         if (durability > 0) {
             if (distance <= range) {
@@ -24,22 +24,7 @@ public class Item implements Descriptive {
             System.out.println(this.name + " is broken and cannot be used.");
         }
     }
-
-    // Use the item with a Fixture
-    public void use(Fixture fixture) {
-        if (durability > 0) {
-            if (fixture.isCompatible(this)) {
-                fixture.performFunction();
-                decreaseDurability();
-            } else {
-                System.out.println(this.name + " cannot be used " + fixture.getName() + ".");
-            }
-        } else {
-            System.out.println(this.name + " is broken and cannot be used.");
-        }
-    }
-
-    // Use the item with a Room
+    // use Item with a Room
     public void use(Room room) {
         if (durability > 0) {
             if (room.isCompatible(this)) {
@@ -52,20 +37,18 @@ public class Item implements Descriptive {
             System.out.println(name + " is broken and cannot be used.");
         }
     }
-
     public void decreaseDurability() {
         durability--;
     }
-
     public boolean isBroken() {
         return durability <= 0;
+    }
+    public boolean isPickedUp() {
+        return pickedUp;
     }
 
     @Override
     public void showDescription() {
         System.out.println("Item: " + name + "\nDescription: " + description);
-    }
-    public boolean isPickedUp() {
-        return pickedUp;
     }
 }
