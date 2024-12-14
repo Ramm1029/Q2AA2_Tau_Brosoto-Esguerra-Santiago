@@ -1,12 +1,7 @@
 package game;
 
-/**
- * 
- */
 public class Humanoid extends Killer {
-
     public Humanoid(String name, int hp, int sightRadius, int damage, int speed) {
         super(name, hp, sightRadius, damage, speed * 2); 
     }
 }
-
