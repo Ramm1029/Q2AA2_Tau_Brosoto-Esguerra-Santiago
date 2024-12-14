@@ -5,7 +5,13 @@
 package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Humanoid extends Killer {
-    public Humanoid(String name, int hp, int sightRadius, int damage, int speed, int atkSpeed) {
-        super(name, 80, sightRadius, damage, 80, 80); 
+    public Humanoid(String name) {
+        super(name); 
+        this.hp = 80;
+        this.sightRadius = 100;
+        this.damage = 20;
+        this.speed = 100;
+        this.atkSpeed = 50;
+        this.position = 0;
     }
 }
