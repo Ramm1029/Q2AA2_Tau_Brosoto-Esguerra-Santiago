@@ -1,8 +1,11 @@
-package game;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Monster extends Killer {
-    public Monster(String name, int hp, int sightRadius, int damage, int speed) {
-        super(name, hp, sightRadius, damage * 2, speed / 2);
+    public Monster(String name, int hp, int sightRadius, int damage, int speed, int atkSpeed) {
+        super(name, 120, sightRadius, damage, 110, 120);
     }
 }
-
