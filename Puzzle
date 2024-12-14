@@ -1,1 +1,17 @@
+package cs4_aa_tau_brosoto.esguerra.santiago;
 
+public class Puzzle {
+    private String question, answer;
+    private Item item;
+    private boolean solved;
+    
+    public Puzzle(String question, String answer, Item item) {
+        this.question = question;
+        this.answer = answer;
+        this.item = item;
+    }
+    
+    public void solve(String answer) {
+        solved = this.answer.equals(answer);
+    }
+}
