@@ -5,31 +5,13 @@
 package cs4_aa_tau_brosotoesguerrasantiago;
 
 public class Item implements Descriptive {
-    private String name, description;
-    private int durability, damage, range;
-    private boolean pickedUp;
+    protected String name, description;
+    protected boolean pickedUp;
 
-    public Item(String name, String description, int durability, int damage, int range) {
+    public Item(String name, String description) {
         this.name = name;
         this.description = description;
-        this.durability = durability;
-        this.damage = damage;
-        this.range = range;
         pickedUp = false; 
-    }
-    // use Item to attack Killer
-    public void use(Killer killer, int distance) {
-        if (durability > 0) {
-            if (distance <= range) {
-                killer.takeDamage(damage);
-                decreaseDurability();
-            }
-        } else {
-            System.out.println(this.name + " is broken and cannot be used.");
-        }
-    }
-    public void decreaseDurability() {
-        durability--;
     }
     @Override
     public void showDescription() {
@@ -42,19 +24,7 @@ public class Item implements Descriptive {
     public String getDescription() {
         return description;
     }
-    public int getRange() {
-        return range;
-    }
-    public int getDamage() {
-        return damage;
-    }
-    public int getDurability() {
-        return durability;
-    }
     public boolean isPickedUp() {
         return pickedUp;
-    }
-    public boolean isBroken() {
-        return (durability <= 0);
     }
 }
