@@ -24,7 +24,7 @@ public class Key extends Item {
         return room.getName();
     }
     // setters
-    public void setRoom(String room) {
+    public void setRoom(Room room) {
         this.room = room;
     }
 }
