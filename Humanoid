@@ -2,10 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cs4_aa_tau_brosotoesguerrasantiago;
+package game;
 
 public class Humanoid extends Killer {
     public Humanoid(String name) {
         super(name, 80, 100, 20, 90, 50); 
+    }
+    
+    @Override
+     public void recoverHealth(int characterPosition) {
+        int distance = Math.abs(characterPosition - this.position);
+        if (distance > sightRadius && hp < 80) {
+            hp++;
+        }
     }
 }
