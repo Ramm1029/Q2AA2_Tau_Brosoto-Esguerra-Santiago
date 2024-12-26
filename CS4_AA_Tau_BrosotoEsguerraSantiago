@@ -1,47 +1,124 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package cs4_aa_tau_brosotoesguerrasantiago;
+package game;
 import java.util.Scanner;
 
 public class CS4_AA_Tau_BrosotoEsguerraSantiago {
 
     /**
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Character player = new Character("EJ");
         Fixture chair = new Fixture("Chair", "This is a chair you can sit on.");
-        Item stick = new Weapon("Stick", "This is a stick you can use.", 100, 10, 10);
-        Killer ghostface = new Humanoid("Ghostface");
-        Killer werewolf = new Monster("Werewolf");
+        Weapon stick = new Weapon("Stick", "This is a stick you can use.", 1000, 80, 80);
+        Killer ghostface = new Humanoid("Ghostface"); 
         Room shb319 = new Room("SHB 319", "This is Tau's homeroom classroom", true);
-        Item shb319Key = new Key("SHB 319 Key", shb319);
-        Puzzle stickPuzzle = new Puzzle("I'm tall when I'm young, and I'm short when I'm old. What am I?", "candle", stick);
-        
+        Key shb319Key = new Key("SHB 319 Key", shb319);
+        Puzzle stickPuzzle = new Puzzle(
+            "I'm tall when I'm young, and I'm short when I'm old. What am I?",
+            "candle", stick);    
+    
         shb319.addFixture(chair);
-        
+
         OUTER:
         while (true) {
             System.out.println("Welcome to SHB Mysteries: What Lurks...");
-            System.out.println("Would you like to play? [Y/N] ");
+            System.out.println("Would you like to play? [Y/N]");
             var play = sc.nextLine();
             switch (play) {
                 case "Y":
-                    player.interact(stick);
-                    player.interact(chair);
-                    player.interact(shb319);
+                    System.out.println("Choose an action: 1 - Enter a Room, 2 - Boss Fight, 3 - Interact with Fixtures");
+                    int action = sc.nextInt();
+                    sc.nextLine(); 
+                    switch (action) {
+                        case 1:
+                            // Use Case #2: Entering a Room
+                            System.out.println("You approach the room " + shb319.getName());
+                            if (shb319.isAvailable()) {
+                                System.out.println("The room is open. You enter.");
+                                player.interact(shb319); 
+                            } else {
+                                System.out.println("The room is locked. Do you want to unlock it? [Y/N]");
+                                String unlockChoice = sc.nextLine();
+                                if (unlockChoice.equals("Y")) {
+                                    shb319Key.use(shb319);
+                                    System.out.println("The room is now unlocked.");
+                                    player.interact(shb319);
+                                } 
+                            }
+                            break;
+
+                        case 2:
+                              // Use Case #3: Boss Fight
+                            System.out.println("You encounter the killer " + ghostface.getName());
+                            System.out.println("Enter the starting position of the killer:");
+                            int killerPosition = sc.nextInt();
+                            ghostface.setPosition(killerPosition);
+                            System.out.println("Enter your starting position:");
+                            int playerPosition = sc.nextInt();
+                            player.setPosition(playerPosition);
+
+                            while (ghostface.getHp() > 0 && player.getHP() > 0) {
+                                System.out.println("Your current HP: " + player.getHP());
+                                System.out.println("Killer's current HP: " + ghostface.getHp());
+                                System.out.println("Enter your new position:");
+                                playerPosition = sc.nextInt();
+                                player.setPosition(playerPosition);
+                                ghostface.chase(player, player.getPosition());
+                                
+                                int distance = Math.abs(player.getPosition() - ghostface.getPosition());
+                                
+                                if (distance > ghostface.getSightRadius()) {
+                                    System.out.println("The killer cannot see you anymore .");
+                                    ghostface.recoverHealth(player.getPosition());
+                                    break;
+                                }
+
+                                ghostface.attack(player, player.getPosition());
+
+                                if (player.getHP() <= 0) {
+                                    System.out.println("You have been defeated by the killer...");
+                                    break;
+                                }
+
+                                System.out.println("Do you attack the killer back? [Y/N]");
+                                String attackChoice = sc.next();
+                                if (attackChoice.equals("Y")) {
+                                    player.attackKiller(stick, ghostface);
+                                }
+                            }
+
+                            if (ghostface.getHp() <= 0) {
+                                System.out.println("You defeated the killer! You can now leave the building.");
+                            }
+                            break;
+                        case 3:
+                            // Use Case #4: Interacting with Fixtures
+                            System.out.println("You find a fixture: " + chair.getName());
+                            System.out.println(chair.getDescription());
+                            System.out.println("Do you want to use its special function? [Y/N]");
+                            String fixtureChoice = sc.nextLine();
+                            if (fixtureChoice.equalsIgnoreCase("Y")) {
+                                chair.performFunction();
+                                System.out.println("You used the special function of the fixture.");
+                            }
+                            break;
+
+                        default:
+                            System.out.println("Invalid action. Please choose 1, 2, or 3.");
+                            break;
+                    }
                     break;
+
                 case "N":
                     System.out.println("Thank you. Goodbye!");
-                    break OUTER;
+                    break OUTER; 
+
                 default:
                     System.out.println("Please input Y or N only.");
                     break;
             }
         }
     }
-    
 }
