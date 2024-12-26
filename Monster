@@ -2,10 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cs4_aa_tau_brosotoesguerrasantiago;
+package game;
 
 public class Monster extends Killer {
     public Monster(String name) {
         super(name, 120, 100, 30, 110, 70);
+    }
+    
+    @Override
+    public void recoverHealth(int characterPosition) {
+       int distance = Math.abs(characterPosition - this.position);
+       if (distance > sightRadius && hp < 120) {
+           hp++;
+       }
     }
 }
