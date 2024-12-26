@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package cs4_aa_tau_brosotoesguerrasantiago;
+package game;
 
-public class Killer {
+public abstract class Killer {
     protected String name;
     protected int hp, sightRadius, damage, speed, position, atkSpeed;
 
@@ -35,15 +35,11 @@ public class Killer {
         int distance = Math.abs(characterPosition - this.position);
         if (distance <= sightRadius) {
             character.takeDamage(damage);
+            System.out.println("The killer attacks you!");
         }
     }
     
-    public void recoverHealth(int characterPosition) {
-        int distance = Math.abs(characterPosition - this.position);
-        if (distance > sightRadius) {
-            hp++;
-        }
-    }
+    public abstract void recoverHealth(int characterPosition);
 
     public void takeDamage(int damage) {
         hp -= damage;
